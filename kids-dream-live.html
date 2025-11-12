@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Dream - Kids Dream | Loja Online</title>
+    <meta name="description" content="Orange Dream #1 - Kids Dream. Edição limitada Clockwork Orange by Vintage Factor. Compra agora no Vinted.">
+    <meta name="theme-color" content="#FF6600">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #FF6600 0%, #ff8533 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1200px;
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .header {
+            background: linear-gradient(135deg, #FF6600 0%, #ff8533 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        .content {
+            padding: 60px;
+        }
+        .section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        .image-box {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .image-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 60px rgba(255, 102, 0, 0.3);
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .text h2 {
+            color: #FF6600;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .features {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #FF6600;
+        }
+        .features p {
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            background: #FF6600;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #E55100;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
+        }
+        .section-reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+        .section-reverse .image-box {
+            order: 2;
+        }
+        .section-reverse .text {
+            order: 1;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 85%;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .close:hover {
+            background: rgba(255, 102, 0, 0.7);
+            transform: scale(1.1);
+        }
+        .footer {
+            background: #f5f5f5;
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #FF6600;
+        }
+        .footer p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .footer strong {
+            color: #FF6600;
+        }
+        @media (max-width: 768px) {
+            .section, .section-reverse {
+                grid-template-columns: 1fr;
+            }
+            .section-reverse .image-box,
+            .section-reverse .text {
+                order: auto !important;
+            }
+            .header h1 { font-size: 2rem; }
+            .text h2 { font-size: 1.5rem; }
+            .content { padding: 30px; }
+            .header { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 ORANGE DREAM #1</h1>
+            <p>Kids Dream - Clockwork Orange by Vintage Factor</p>
+        </div>
+
+        <div class="content">
+            <!-- SECTION 1 - FRONT VIEW -->
+            <div class="section">
+                <div class="image-box" onclick="openModal('img1')">
+                    <img id="img1" src="IMG_9399.jpg" alt="Orange Dream - Vista Frontal" loading="lazy">
+                </div>
+                <div class="text">
+                    <h2>Vista Frontal</h2>
+                    <p>A qualidade e sofisticação num único t-shirt. Observa o detalhe do design Clockwork Orange integrado perfeitamente com a imagem do Porsche vintage.</p>
+                    <div class="features">
+                        <p>✨ <strong>Tecido Premium</strong> - Gramagem alta, super confortável</p>
+                        <p>🎨 <strong>Impressão Profissional</strong> - Cores vibrantes e duradouras</p>
+                        <p>🚗 <strong>Design Icónico</strong> - Inspirado em Clockwork Orange</p>
+                        <p>💎 <strong>Edição Numerada</strong> - Quantidade restrita e limitada</p>
+                    </div>
+                    <a href="https://www.vinted.pt/member/311173115" target="_blank" class="btn">🛍️ Comprar no Vinted Agora</a>
+                </div>
+            </div>
+
+            <!-- SECTION 2 - SIDE VIEW -->
+            <div class="section section-reverse">
+                <div class="image-box" onclick="openModal('img2')">
+                    <img id="img2" src="IMG_9400.jpg" alt="Orange Dream - Vista Lateral" loading="lazy">
+                </div>
+                <div class="text">
+                    <h2>Vista Lateral - Elegância Pura</h2>
+                    <p>O corte perfeito e o ajuste impecável do t-shirt Kids Dream. Vê como o design se integra naturalmente com o corpo, criando uma silhueta elegante e sofisticada.</p>
+                    <div class="features">
+                        <p>👕 <strong>Conforto Máximo</strong> - Tecido respirável e macio</p>
+                        <p>📐 <strong>Corte Anatômico</strong> - Versátil e bem ajustado</p>
+                        <p>🌍 <strong>Produção Responsável</strong> - Qualidade europeia garantida</p>
+                        <p>🎁 <strong>Para Colecionadores</strong> - Valor de revenda e exclusividade</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Kids Dream</strong> - Clockwork Orange by Vintage Factor</p>
+            <p>Criado com 💙 por um jovem empreendedor que sonha grande</p>
+            <p>&copy; 2025 Kids Dream. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <!-- MODAL PARA AMPLIAR IMAGEM -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modal-img" src="" alt="Orange Dream Expandido">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imgId) {
+            const img = document.getElementById(imgId);
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
