@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Dream - Atualizado</title>
+</head>
+<body>
+    <h1>Kids Dream - Clockwork Orange</h1>
+    <p>Versão atualizada com imagens IMG_9399.jpeg e IMG_9400.jpeg na galeria e em destaque.</p>
+
+    <section id="orange-dream">
+        <h2>⭐ Orange Dream #1 - Destaque</h2>
+        <div class="orange-dream-showcase">
+            <div class="orange-dream-image">
+                <img src="IMG_9399.jpeg" alt="Orange Dream #1 - Frente" onclick="openModal('IMG_9399.jpeg')">
+            </div>
+            <div class="orange-dream-content">
+                <h3>Orange Dream #1</h3>
+                <p>A edição que começou tudo — qualidade premium e design icónico.</p>
+            </div>
+        </div>
+
+        <div class="orange-dream-showcase" style="flex-direction: row-reverse; margin-top: 4rem;">
+            <div class="orange-dream-image">
+                <img src="IMG_9400.jpeg" alt="Orange Dream #1 - Perfil" onclick="openModal('IMG_9400.jpeg')">
+            </div>
+            <div class="orange-dream-content">
+                <h3>Pormenores da Qualidade</h3>
+                <p>Fotografia lateral que mostra a textura e o corte profissional da t-shirt.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="galleryGrid"></div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Kids Dream - Clockwork Orange">
+        </div>
+    </div>
+
+    <script>
+        const galleryImages = [
+            {name: 'IMG_9399.jpeg', title: 'Edição #7 - Special'},
+            {name: 'IMG_9400.jpeg', title: 'Edição #8 - Custom'}
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        galleryImages.forEach((img) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${img.name}" alt="${img.title}" loading="lazy">
+                <div class="gallery-overlay"><p>${img.title}</p></div>
+            `;
+            item.addEventListener('click', () => openModal(img.name));
+            galleryGrid.appendChild(item);
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+
+        function openModal(imageSrc) {
+            modal.style.display = 'block';
+            modalImage.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
